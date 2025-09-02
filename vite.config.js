@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 
 
 export default defineConfig({
-  base: '/Portfolio_V2/', // GitHub Pages base path
+  // base: '/Portfolio_V2/', // Temporarily removed for testing
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
