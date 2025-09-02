@@ -217,4 +217,21 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Mobile touch improvements */
+  button, a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Better mobile scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mobile-friendly focus states */
+  button:focus-visible, a:focus-visible {
+    @apply ring-2 ring-orange-500 ring-offset-2 ring-offset-[#181a1b];
+  }
 }

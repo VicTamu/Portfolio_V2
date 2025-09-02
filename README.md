@@ -1,67 +1,28 @@
-# Vite + React + shadcn/ui Skeleton
+# Victor Ekeke - Portfolio Website
 
-A modern, production-ready skeleton for building React applications with Vite, Tailwind CSS, and shadcn/ui components.
+A modern, responsive portfolio website showcasing my work as a Front-end Developer & Designer. Built with React, Vite, and Tailwind CSS.
 
 ## 🚀 Features
 
-- **Vite 7.1.2** - Lightning-fast build tool with instant HMR
-- **React 19.1.1** - Latest React with modern features and hooks
-- **Tailwind CSS v4** - Utility-first CSS framework with CSS variables
-- **shadcn/ui** - Professional, accessible UI components
-- **ESLint 9** - Modern linting with React-specific rules
-- **Hot Module Replacement** - See changes instantly
-- **TypeScript Ready** - Easy to add TypeScript later
+- **Modern Design** - Clean, professional portfolio with dark theme
+- **Responsive Layout** - Optimized for all devices and screen sizes
+- **Interactive Projects** - Showcase of web development work with live demos
+- **Contact Form** - EmailJS integration for direct communication
+- **Smooth Animations** - Engaging user experience with CSS transitions
+- **Error Handling** - Comprehensive error boundaries and loading states
+- **Performance Optimized** - Fast loading with lazy images and optimized assets
+- **SEO Ready** - Proper meta tags and semantic HTML structure
 
 ## 🛠️ Tech Stack
 
-- **Build Tool**: Vite
-- **Framework**: React 19
+- **Build Tool**: Vite 7.1.2
+- **Framework**: React 19.1.1
 - **Styling**: Tailwind CSS v4
 - **UI Components**: shadcn/ui
+- **Email Service**: EmailJS
+- **Icons**: Lucide React
 - **Package Manager**: npm
 - **Linting**: ESLint 9
-
-## 📦 Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd vite-react-skeleton
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173/`
-
-## 🎯 Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-## 🎨 Adding shadcn/ui Components
-
-Add new components using the CLI:
-```bash
-npx shadcn@latest add [component-name]
-```
-
-**Popular components:**
-- `npx shadcn@latest add button` - Button component
-- `npx shadcn@latest add card` - Card component
-- `npx shadcn@latest add input` - Input component
-- `npx shadcn@latest add dialog` - Modal dialog
-- `npx shadcn@latest add dropdown-menu` - Dropdown menu
 
 ## 🔧 Configuration Files
 
@@ -73,11 +34,19 @@ npx shadcn@latest add [component-name]
 ## 📁 Project Structure
 
 ```
-vite-react-skeleton/
-├── public/                 # Static assets
+Portfolio_V2/
+├── public/                 # Static assets (images, resume, etc.)
+│   ├── images/            # Project screenshots and assets
+│   └── VE_Resume.pdf      # Resume download
 ├── src/
-│   ├── components/         # shadcn/ui components
-│   │   └── ui/            # UI component library
+│   ├── components/         # React components
+│   │   ├── ui/            # shadcn/ui component library
+│   │   ├── Portfolio.jsx  # Main portfolio component
+│   │   ├── Projects.jsx   # Projects showcase component
+│   │   ├── ErrorBoundary.jsx # Error handling component
+│   │   └── ImageWithLoading.jsx # Image loading component
+│   ├── config/            # Configuration files
+│   │   └── emailjs.js     # EmailJS configuration
 │   ├── lib/               # Utility functions
 │   ├── App.jsx            # Main application component
 │   ├── main.jsx           # Application entry point
@@ -87,52 +56,31 @@ vite-react-skeleton/
 └── README.md               # This file
 ```
 
-## 🎨 Design System
+## 🎨 Portfolio Sections
 
-This skeleton includes:
-- **CSS Variables** - Automatic dark/light mode support
-- **Consistent Spacing** - Tailwind's spacing scale
-- **Color Palette** - Professional color scheme
-- **Typography** - Consistent font sizing and weights
-- **Component Library** - Pre-built, accessible UI components
+- **Hero Section** - Eye-catching introduction with call-to-action buttons
+- **About Me** - Personal story, skills, and professional background
+- **Services** - Detailed breakdown of web development services offered
+- **Portfolio** - Interactive showcase of completed projects
+- **Contact** - Contact form with EmailJS integration and social links
+- **Experience & Education** - Professional timeline and academic background
 
-## 🚀 Getting Started
+## 📱 Contact
 
-1. **Customize the theme** - Modify colors in `src/index.css`
-2. **Add components** - Use shadcn/ui CLI to add new components
-3. **Build your app** - Start with `App.jsx` and build from there
-4. **Add routing** - Install `react-router-dom` for navigation
-5. **Add state management** - Install `zustand` or `@reduxjs/toolkit`
+- **Email**: vitecollabs@gmail.com
+- **LinkedIn**: [Victor Ekeke](https://www.linkedin.com/in/victor-ekeke-06b80915b/)
+- **Upwork**: [Victor Ekeke](https://www.upwork.com/freelancers/~010b907b38ab4e3efc?mp_source=share)
 
-## 🔌 Easy Extensions
+## 🎯 Featured Projects
 
-- **TypeScript**: `npm install -D typescript @types/react`
-- **Routing**: `npm install react-router-dom`
-- **State Management**: `npm install zustand` or `npm install @reduxjs/toolkit react-redux`
-- **Forms**: `npm install react-hook-form`
-- **API Calls**: `npm install axios` or `npm install @tanstack/react-query`
-
-## 📱 Perfect For Building
-
-- Single Page Applications (SPAs)
-- Landing Pages
-- Admin Dashboards
-- E-commerce Sites
-- Portfolio Websites
-- Web Applications
-- Progressive Web Apps (PWAs)
-
-## 🤝 Contributing
-
-This is a skeleton repository. Feel free to:
-- Fork and customize for your projects
-- Submit issues for improvements
-- Create pull requests for enhancements
+- **[Pampered by Yuni](https://pamperedbyyuni.com)** - Beauty brand website
+- **[ViTech Accessories](https://victamu.github.io/ViTech/)** - E-commerce landing page
+- **[Scientific Calculator](https://victamu.github.io/Calculator/index.html)** - Interactive calculator app
 
 ## 📄 License
 
-MIT License - feel free to use this skeleton for any project!
+This project is for portfolio purposes. All rights reserved.
 
 ---
 
-**Built with ❤️ using Vite, React, Tailwind CSS, and shadcn/ui**
+**Built with ❤️ by Victor using Vite, React, Tailwind CSS, and shadcn/ui**
