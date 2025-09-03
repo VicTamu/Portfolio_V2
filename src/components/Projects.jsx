@@ -9,21 +9,21 @@ import { X, ArrowUpRight } from 'lucide-react'
 const projects = {
   pamperedByYuni: {
     title: 'Pampered by Yuni',
-    image: '/images/Pampered by Yuni Hero.jpg',
+    image: './images/Pampered by Yuni Hero.jpg',
     tags: ['Front-end', 'Beauty Brand', 'Wellness'],
     desc: 'Pampered By Yuni is a self-care beauty brand focused on healing through intentional, personalized wellness.',
     link: 'https://pamperedbyyuni.com'
   },
   vitech: {
     title: 'ViTech Accessories',
-    image: '/images/ViTech Landing Page.jpg',
+    image: './images/ViTech Landing Page.jpg',
     tags: ['Front-end', 'E-commerce', 'Responsive'],
     desc: 'A modern e-commerce landing page showcasing tech accessories. Features responsive design and interactive elements.',
     link: 'https://victamu.github.io/ViTech/'
   },
   calculator: {
     title: 'Simple & Scientific Calculator',
-    image: '/images/Scientific Calculator.jpg',
+    image: './images/Scientific Calculator.jpg',
     tags: ['Front-end', 'Background Animation', 'JavaScript'],
     desc: 'A feature-rich calculator that handles both basic arithmetic and complex scientific calculations. Built with HTML, CSS, and JavaScript.',
     link: 'https://victamu.github.io/Calculator/index.html'

@@ -13,21 +13,21 @@ import { emailjsConfig } from '@/config/emailjs'
 const projects = {
   pamperedByYuni: {
     title: 'Pampered by Yuni',
-    image: '/images/Pampered by Yuni Hero.jpg',
+    image: './images/Pampered by Yuni Hero.jpg',
     tags: ['Front-end', 'Beauty Brand', 'Wellness'],
     desc: 'Pampered By Yuni is a self-care beauty brand focused on healing through intentional, personalized wellness.',
     link: 'https://pamperedbyyuni.com'
   },
   vitech: {
     title: 'ViTech Accessories',
-    image: '/images/ViTech Landing Page.jpg',
+    image: './images/ViTech Landing Page.jpg',
     tags: ['Front-end', 'E-commerce', 'Responsive'],
     desc: 'Explore ViTech\'s assortment of tools and products designed to simplify everyday tech tasks.',
     link: 'https://victamu.github.io/ViTech/'
   },
   calculator: {
     title: 'Simple & Scientific Calculator',
-    image: '/images/Scientific Calculator.jpg',
+    image: './images/Scientific Calculator.jpg',
     tags: ['Front-end', 'Background Animation', 'JavaScript'],
     desc: 'Perform simple and complex mathematical and scientific operations. Click the link to explore!',
     link: 'https://victamu.github.io/Calculator/index.html'
@@ -303,7 +303,7 @@ export function Portfolio({ onViewProjects }) {
               <div className="relative">
                 <div className="w-48 h-48 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-orange-500/20 shadow-2xl">
                   <ImageWithLoading
-                    src="/images/Moi.jpg"
+                    src="./images/Moi.jpg"
                     alt="Victor Ekeke - Professional Portrait"
                     className="w-full h-full object-cover"
                     containerClassName="w-full h-full"
@@ -660,7 +660,7 @@ export function Portfolio({ onViewProjects }) {
                className="flex items-center justify-center space-x-3 p-4 bg-[#232526] rounded-lg hover:bg-[#2a2d2e] transition-colors duration-200 group"
              >
               <img 
-                src="/images/upworklogo.svg" 
+                src="./images/upworklogo.svg" 
                 alt="Upwork Logo" 
                 className="h-8 w-8"
               />
@@ -673,7 +673,7 @@ export function Portfolio({ onViewProjects }) {
                className="flex items-center justify-center space-x-3 p-4 bg-[#232526] rounded-lg hover:bg-[#2a2d2e] transition-colors duration-200 group"
              >
               <img 
-                src="/images/linkedin-svgrepo-com.svg" 
+                src="./images/linkedin-svgrepo-com.svg" 
                 alt="LinkedIn Logo" 
                 className="h-8 w-8"
               />
@@ -687,7 +687,7 @@ export function Portfolio({ onViewProjects }) {
               className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black font-semibold px-8 py-4 text-lg"
               asChild
             >
-              <a href="/VE_Resume.pdf" download="Victor_Ekeke_Resume.pdf">
+              <a href="./VE_Resume.pdf" download="Victor_Ekeke_Resume.pdf">
                 <Download className="h-5 w-5 mr-2" />
                 Download CV
               </a>
