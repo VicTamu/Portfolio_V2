@@ -40,20 +40,32 @@ export function Projects({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#181a1b] text-white relative overflow-x-hidden">
-      <div className="fixed inset-0 pointer-events-none z-0">
+    <div className="min-h-screen bg-[#181a1b] text-white relative overflow-x-hidden" role="main" aria-label="Victor Ekeke Projects">
+      {/* Skip to main content link */}
+      <a 
+        href="#projects-heading" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-500 text-black px-4 py-2 rounded-md font-semibold z-50"
+        onClick={(e) => {
+          e.preventDefault()
+          document.getElementById('projects-heading')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+      >
+        Skip to main content
+      </a>
+      <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
         <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-4 sm:right-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#181a1b]/90 backdrop-blur-md border-b border-[#232526]/50">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#181a1b]/90 backdrop-blur-md border-b border-[#232526]/50" role="navigation" aria-label="Projects navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center">
               <button 
                 onClick={onBack}
                 className="text-2xl font-bold hover:text-orange-500 transition-colors duration-200 cursor-pointer"
+                aria-label="Victor Ekeke - Back to portfolio"
               >
                 <span className="text-orange-500">V</span>ictor
               </button>
@@ -63,6 +75,7 @@ export function Projects({ onBack }) {
                 onClick={onBack}
                 variant="outline"
                 className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black"
+                aria-label="Return to main portfolio page"
               >
                 ← Back to Portfolio
               </Button>
@@ -71,9 +84,9 @@ export function Projects({ onBack }) {
         </div>
       </nav>
 
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24" aria-labelledby="projects-heading">
         <div className="text-center mb-12 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Web Projects and Development Work</h1>
+          <h1 id="projects-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Web Projects and Development Work</h1>
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto px-2">
             Some of the fun and interesting projects that I've developed.
           </p>
@@ -83,6 +96,15 @@ export function Projects({ onBack }) {
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
             onClick={() => openProjectModal('pamperedByYuni')}
+            role="button"
+            tabIndex={0}
+            aria-label="View Pampered by Yuni project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('pamperedByYuni')
+              }
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ImageWithLoading
@@ -110,6 +132,15 @@ export function Projects({ onBack }) {
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
             onClick={() => openProjectModal('vitech')}
+            role="button"
+            tabIndex={0}
+            aria-label="View ViTech Accessories project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('vitech')
+              }
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ImageWithLoading
@@ -137,6 +168,15 @@ export function Projects({ onBack }) {
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
             onClick={() => openProjectModal('calculator')}
+            role="button"
+            tabIndex={0}
+            aria-label="View Calculator project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('calculator')
+              }
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ImageWithLoading
@@ -164,12 +204,12 @@ export function Projects({ onBack }) {
       </main>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-4xl bg-[#181a1b] border-[#232526] text-white p-0 overflow-hidden">
+        <DialogContent className="max-w-4xl bg-[#181a1b] border-[#232526] text-white p-0 overflow-hidden" aria-labelledby="project-dialog-title">
           {selectedProject && (
             <>
               <div className="flex justify-between items-start p-6 pb-0">
                 <DialogHeader>
-                  <DialogTitle className="text-3xl font-bold text-white">
+                  <DialogTitle id="project-dialog-title" className="text-3xl font-bold text-white">
                     {selectedProject.title}
                   </DialogTitle>
                 </DialogHeader>
@@ -203,7 +243,7 @@ export function Projects({ onBack }) {
                         asChild
                         className="bg-orange-500 hover:bg-orange-600 text-black font-semibold px-6 py-3 transition-all duration-200"
                       >
-                        <a href={selectedProject.link} target="_blank" rel="noopener noreferrer">
+                        <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${selectedProject.title} live project (opens in new tab)`}>
                           Visit Live Project
                           <ArrowUpRight className="h-4 w-4 ml-2" />
                         </a>

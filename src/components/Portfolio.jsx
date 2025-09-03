@@ -152,33 +152,45 @@ export function Portfolio({ onViewProjects }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#181a1b] text-white relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#181a1b] text-white relative overflow-x-hidden" role="main" aria-label="Victor Ekeke Portfolio">
+      {/* Skip to main content link */}
+      <a 
+        href="#home" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-orange-500 text-black px-4 py-2 rounded-md font-semibold z-50"
+        onClick={(e) => {
+          e.preventDefault()
+          scrollToSection('home')
+        }}
+      >
+        Skip to main content
+      </a>
       {/* Animated background blobs */}
-              <div className="fixed inset-0 pointer-events-none z-0">
+              <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
           <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 right-4 sm:right-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-500"></div>
         </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#181a1b]/80 backdrop-blur-md border-b border-[#232526]/50">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-[#181a1b]/80 backdrop-blur-md border-b border-[#232526]/50" role="navigation" aria-label="Main navigation">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center -ml-2">
               <button 
                 onClick={() => scrollToSection('home')}
                 className="text-2xl md:text-3xl font-bold hover:text-orange-500 transition-colors duration-200 cursor-pointer"
+                aria-label="Victor Ekeke - Go to home section"
               >
                 <span className="text-orange-500">V</span>ictor
               </button>
             </div>
             {/* Desktop Navigation */}
-            <ul className="hidden md:flex space-x-8 lg:space-x-12">
-              <li><button onClick={() => scrollToSection('home')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'home' ? 'text-orange-500' : ''}`}>Home</button></li>
-              <li><button onClick={() => scrollToSection('about')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'about' ? 'text-orange-500' : ''}`}>About</button></li>
-              <li><button onClick={() => scrollToSection('services')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'services' ? 'text-orange-500' : ''}`}>Services</button></li>
-              <li><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'portfolio' ? 'text-orange-500' : ''}`}>Portfolio</button></li>
-              <li><button onClick={() => scrollToSection('contact')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'contact' ? 'text-orange-500' : ''}`}>Contact</button></li>
+            <ul className="hidden md:flex space-x-8 lg:space-x-12" role="menubar">
+              <li role="none"><button onClick={() => scrollToSection('home')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'home' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'home' ? 'page' : undefined}>Home</button></li>
+              <li role="none"><button onClick={() => scrollToSection('about')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'about' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'about' ? 'page' : undefined}>About</button></li>
+              <li role="none"><button onClick={() => scrollToSection('services')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'services' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'services' ? 'page' : undefined}>Services</button></li>
+              <li role="none"><button onClick={() => scrollToSection('portfolio')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'portfolio' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'portfolio' ? 'page' : undefined}>Portfolio</button></li>
+              <li role="none"><button onClick={() => scrollToSection('contact')} className={`hover:text-orange-500 transition-colors duration-200 text-sm lg:text-base font-medium ${activeSection === 'contact' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</button></li>
             </ul>
 
             {/* Mobile Menu Button */}
@@ -186,6 +198,8 @@ export function Portfolio({ onViewProjects }) {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-white hover:text-orange-500 transition-colors duration-200"
               aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <Menu className="h-5 w-5" />
             </button>
@@ -194,22 +208,22 @@ export function Portfolio({ onViewProjects }) {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-[#232526]/50 bg-[#181a1b]/95 backdrop-blur-md">
+          <div id="mobile-menu" className="md:hidden border-t border-[#232526]/50 bg-[#181a1b]/95 backdrop-blur-md" role="menu" aria-label="Mobile navigation menu">
             <ul className="py-4 space-y-2">
-              <li><button onClick={() => { scrollToSection('home'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'home' ? 'text-orange-500' : ''}`}>Home</button></li>
-              <li><button onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'about' ? 'text-orange-500' : ''}`}>About</button></li>
-              <li><button onClick={() => { scrollToSection('services'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'services' ? 'text-orange-500' : ''}`}>Services</button></li>
-              <li><button onClick={() => { scrollToSection('portfolio'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'portfolio' ? 'text-orange-500' : ''}`}>Portfolio</button></li>
-              <li><button onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'contact' ? 'text-orange-500' : ''}`}>Contact</button></li>
+              <li role="none"><button onClick={() => { scrollToSection('home'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'home' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'home' ? 'page' : undefined}>Home</button></li>
+              <li role="none"><button onClick={() => { scrollToSection('about'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'about' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'about' ? 'page' : undefined}>About</button></li>
+              <li role="none"><button onClick={() => { scrollToSection('services'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'services' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'services' ? 'page' : undefined}>Services</button></li>
+              <li role="none"><button onClick={() => { scrollToSection('portfolio'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'portfolio' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'portfolio' ? 'page' : undefined}>Portfolio</button></li>
+              <li role="none"><button onClick={() => { scrollToSection('contact'); setIsMobileMenuOpen(false); }} className={`w-full text-left px-4 py-3 hover:text-orange-500 transition-colors duration-200 text-base font-medium ${activeSection === 'contact' ? 'text-orange-500' : ''}`} role="menuitem" aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</button></li>
             </ul>
           </div>
         )}
       </nav>
 
       {/* Home Section */}
-      <section id="home" className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-0">
+      <section id="home" className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-0" aria-labelledby="home-heading">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 tracking-tight leading-tight">
+          <h1 id="home-heading" className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 tracking-tight leading-tight">
             <span className="block">
               <span className="text-orange-500">I</span>
               <span className="text-white">deas</span>
@@ -234,6 +248,7 @@ export function Portfolio({ onViewProjects }) {
                           <Button 
                 onClick={() => scrollToSection('portfolio')}
                 className="bg-orange-500 hover:bg-orange-600 active:bg-orange-700 text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto touch-manipulation"
+                aria-label="View my portfolio projects"
               >
                 View My Work
               </Button>
@@ -241,6 +256,7 @@ export function Portfolio({ onViewProjects }) {
               onClick={() => scrollToSection('contact')}
               variant="outline"
               className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black active:bg-orange-600 active:text-black font-semibold px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto touch-manipulation"
+              aria-label="Get in touch with Victor"
             >
               Get In Touch
             </Button>
@@ -249,9 +265,9 @@ export function Portfolio({ onViewProjects }) {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <section id="about" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto" aria-labelledby="about-heading">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">About Me</h2>
+          <h2 id="about-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">About Me</h2>
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             <div className="text-left space-y-6">
               <div className="space-y-4">
@@ -304,14 +320,14 @@ export function Portfolio({ onViewProjects }) {
                 <div className="w-48 h-48 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-orange-500/20 shadow-2xl">
                   <ImageWithLoading
                     src="./images/Moi.jpg"
-                    alt="Victor Ekeke - Professional Portrait"
+                    alt="Victor Ekeke, a professional web developer and designer, smiling in a professional headshot"
                     className="w-full h-full object-cover"
                     containerClassName="w-full h-full"
                   />
                 </div>
                 {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-500/20 rounded-full"></div>
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-orange-500/30 rounded-full"></div>
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-orange-500/20 rounded-full" aria-hidden="true"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-orange-500/30 rounded-full" aria-hidden="true"></div>
               </div>
               
               {/* Personal Touch */}
@@ -378,9 +394,9 @@ export function Portfolio({ onViewProjects }) {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="services" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" aria-labelledby="services-heading">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">My Services</h2>
+          <h2 id="services-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">My Services</h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-12 sm:mb-16 px-2">
             From concept to deployment, I deliver comprehensive web solutions that drive results and exceed expectations.
           </p>
@@ -529,9 +545,9 @@ export function Portfolio({ onViewProjects }) {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section id="portfolio" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" aria-labelledby="portfolio-heading">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">My Work</h2>
+          <h2 id="portfolio-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">My Work</h2>
           <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto px-2">
             Some of the fun and interesting projects that I've developed.
           </p>
@@ -543,6 +559,15 @@ export function Portfolio({ onViewProjects }) {
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg"
             onClick={() => openProjectModal('pamperedByYuni')}
+            role="button"
+            tabIndex={0}
+            aria-label="View Pampered by Yuni project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('pamperedByYuni')
+              }
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ImageWithLoading
@@ -571,6 +596,15 @@ export function Portfolio({ onViewProjects }) {
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg"
             onClick={() => openProjectModal('vitech')}
+            role="button"
+            tabIndex={0}
+            aria-label="View ViTech Accessories project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('vitech')
+              }
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ImageWithLoading
@@ -599,6 +633,15 @@ export function Portfolio({ onViewProjects }) {
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg"
             onClick={() => openProjectModal('calculator')}
+            role="button"
+            tabIndex={0}
+            aria-label="View Calculator project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('calculator')
+              }
+            }}
           >
             <div className="aspect-[4/3] overflow-hidden">
               <ImageWithLoading
@@ -636,9 +679,9 @@ export function Portfolio({ onViewProjects }) {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <section id="contact" className="relative z-10 py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" aria-labelledby="contact-heading">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">Contact Me</h2>
+          <h2 id="contact-heading" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8">Contact Me</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
             <div className="flex items-center justify-center space-x-3">
@@ -658,6 +701,7 @@ export function Portfolio({ onViewProjects }) {
                target="_blank" 
                rel="noopener noreferrer"
                className="flex items-center justify-center space-x-3 p-4 bg-[#232526] rounded-lg hover:bg-[#2a2d2e] transition-colors duration-200 group"
+               aria-label="Visit Victor's Upwork profile (opens in new tab)"
              >
               <img 
                 src="./images/upworklogo.svg" 
@@ -671,6 +715,7 @@ export function Portfolio({ onViewProjects }) {
                target="_blank" 
                rel="noopener noreferrer"
                className="flex items-center justify-center space-x-3 p-4 bg-[#232526] rounded-lg hover:bg-[#2a2d2e] transition-colors duration-200 group"
+               aria-label="Visit Victor's LinkedIn profile (opens in new tab)"
              >
               <img 
                 src="./images/linkedin-svgrepo-com.svg" 
@@ -687,14 +732,14 @@ export function Portfolio({ onViewProjects }) {
               className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black font-semibold px-8 py-4 text-lg"
               asChild
             >
-              <a href="./VE_Resume.pdf" download="Victor_Ekeke_Resume.pdf">
+              <a href="./VE_Resume.pdf" download="Victor_Ekeke_Resume.pdf" aria-label="Download Victor Ekeke's resume (PDF)">
                 <Download className="h-5 w-5 mr-2" />
                 Download CV
               </a>
             </Button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto" aria-label="Contact form">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
                 type="text"
@@ -703,6 +748,7 @@ export function Portfolio({ onViewProjects }) {
                 onChange={handleInputChange}
                 placeholder="Name"
                 required
+                aria-label="Your name"
                 className="w-full px-4 py-3 bg-[#232526] border border-[#232526] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500"
               />
               <input
@@ -712,6 +758,7 @@ export function Portfolio({ onViewProjects }) {
                 onChange={handleInputChange}
                 placeholder="Email"
                 required
+                aria-label="Your email address"
                 className="w-full px-4 py-3 bg-[#232526] border border-[#232526] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500"
               />
             </div>
@@ -722,12 +769,14 @@ export function Portfolio({ onViewProjects }) {
               placeholder="Message"
               rows="6"
               required
+              aria-label="Your message"
               className="w-full px-4 py-3 bg-[#232526] border border-[#232526] rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 resize-none"
             ></textarea>
                          <Button 
                type="submit"
                disabled={isSubmitting}
                className="w-full bg-orange-500 hover:bg-orange-600 text-black font-semibold px-8 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+               aria-label={isSubmitting ? 'Sending message, please wait' : 'Send message'}
              >
                {isSubmitting ? 'Sending...' : 'Submit'}
              </Button>
@@ -737,12 +786,12 @@ export function Portfolio({ onViewProjects }) {
 
       {/* Project Modal Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-4xl bg-[#181a1b] border-[#232526] text-white p-0 overflow-hidden">
+        <DialogContent className="max-w-4xl bg-[#181a1b] border-[#232526] text-white p-0 overflow-hidden" aria-labelledby="portfolio-dialog-title">
           {selectedProject && (
             <>
               <div className="flex justify-between items-start p-6 pb-0">
                 <DialogHeader>
-                  <DialogTitle className="text-3xl font-bold text-white">
+                  <DialogTitle id="portfolio-dialog-title" className="text-3xl font-bold text-white">
                     {selectedProject.title}
                   </DialogTitle>
                 </DialogHeader>
@@ -776,7 +825,7 @@ export function Portfolio({ onViewProjects }) {
                         asChild
                         className="bg-orange-500 hover:bg-orange-600 text-black font-semibold px-6 py-3 transition-all duration-200"
                       >
-                        <a href={selectedProject.link} target="_blank" rel="noopener noreferrer">
+                        <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${selectedProject.title} live project (opens in new tab)`}>
                           Visit Live Project
                           <ArrowUpRight className="h-4 w-4 ml-2" />
                         </a>
@@ -802,7 +851,7 @@ export function Portfolio({ onViewProjects }) {
         <Button
           onClick={() => scrollToSection('home')}
           className="fixed bottom-8 right-8 z-50 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full w-12 h-12 p-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:bg-white/20 hover:border-white/30 animate-in fade-in duration-300"
-          aria-label="Back to top"
+          aria-label="Back to top of page"
         >
           <ArrowUp className="h-6 w-6" />
         </Button>
