@@ -10,24 +10,26 @@ import emailjs from '@emailjs/browser'
 import { emailjsConfig } from '@/config/emailjs'
 
 
+const withBase = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const projects = {
+  startupListAfrica: {
+    title: 'StartupList Africa',
+    image: withBase('images/SLA Hero.jpg'),
+    tags: ['Front-end', 'Landing Page', 'UI/UX'],
+    desc: 'StartupList Africa is a data intelligence platform focused on connecting the African startup ecosystem to foster investment and growth.',
+    link: 'https://startuplist.africa/'
+  },
   pamperedByYuni: {
     title: 'Pampered by Yuni',
-    image: './images/Pampered by Yuni Hero.jpg',
+    image: withBase('images/Pampered by Yuni Hero.jpg'),
     tags: ['Front-end', 'Beauty Brand', 'Wellness'],
     desc: 'Pampered By Yuni is a self-care beauty brand focused on healing through intentional, personalized wellness.',
     link: 'https://pamperedbyyuni.com'
   },
-  vitech: {
-    title: 'ViTech Accessories',
-    image: './images/ViTech Landing Page.jpg',
-    tags: ['Front-end', 'E-commerce', 'Responsive'],
-    desc: 'Explore ViTech\'s assortment of tools and products designed to simplify everyday tech tasks.',
-    link: 'https://victamu.github.io/ViTech/'
-  },
   calculator: {
     title: 'Simple & Scientific Calculator',
-    image: './images/Scientific Calculator.jpg',
+    image: withBase('images/Scientific Calculator.jpg'),
     tags: ['Front-end', 'Background Animation', 'JavaScript'],
     desc: 'Perform simple and complex mathematical and scientific operations. Click the link to explore!',
     link: 'https://victamu.github.io/Calculator/index.html'
@@ -319,7 +321,7 @@ export function Portfolio({ onViewProjects }) {
               <div className="relative">
                 <div className="w-48 h-48 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-orange-500/20 shadow-2xl">
                   <ImageWithLoading
-                    src="./images/Moi.jpg"
+                    src={withBase('images/Moi.jpg')}
                     alt="Victor Ekeke, a professional web developer and designer, smiling in a professional headshot"
                     className="w-full h-full object-cover"
                     containerClassName="w-full h-full"
@@ -555,6 +557,43 @@ export function Portfolio({ onViewProjects }) {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* StartupList Africa */}
+          <Card 
+            className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg"
+            onClick={() => openProjectModal('startupListAfrica')}
+            role="button"
+            tabIndex={0}
+            aria-label="View StartupList Africa project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('startupListAfrica')
+              }
+            }}
+          >
+            <div className="aspect-[4/3] overflow-hidden">
+              <ImageWithLoading
+                src={projects.startupListAfrica.image}
+                alt={projects.startupListAfrica.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                containerClassName="w-full h-full"
+              />
+            </div>
+            <CardHeader className="pb-3">
+              <h3 className="text-xl font-bold text-white">
+                {projects.startupListAfrica.title}
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                {projects.startupListAfrica.desc}
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-orange-500 text-sm">↗</span>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Pampered by Yuni */}
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg"
@@ -585,43 +624,6 @@ export function Portfolio({ onViewProjects }) {
             <CardContent className="pt-0">
               <p className="text-gray-400 mb-4 leading-relaxed">
                 {projects.pamperedByYuni.desc}
-              </p>
-              <div className="flex justify-between items-center">
-                <span className="text-orange-500 text-sm">↗</span>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* ViTech Accessories */}
-          <Card 
-            className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg"
-            onClick={() => openProjectModal('vitech')}
-            role="button"
-            tabIndex={0}
-            aria-label="View ViTech Accessories project details"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                openProjectModal('vitech')
-              }
-            }}
-          >
-            <div className="aspect-[4/3] overflow-hidden">
-              <ImageWithLoading
-                src={projects.vitech.image}
-                alt={projects.vitech.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                containerClassName="w-full h-full"
-              />
-            </div>
-            <CardHeader className="pb-3">
-              <h3 className="text-xl font-bold text-white">
-                {projects.vitech.title}
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                {projects.vitech.desc}
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-orange-500 text-sm">↗</span>
@@ -704,7 +706,7 @@ export function Portfolio({ onViewProjects }) {
                aria-label="Visit Victor's Upwork profile (opens in new tab)"
              >
               <img 
-                src="./images/upworklogo.svg" 
+                src={withBase('images/upworklogo.svg')} 
                 alt="Upwork Logo" 
                 className="h-8 w-8"
               />
@@ -718,7 +720,7 @@ export function Portfolio({ onViewProjects }) {
                aria-label="Visit Victor's LinkedIn profile (opens in new tab)"
              >
               <img 
-                src="./images/linkedin-svgrepo-com.svg" 
+                src={withBase('images/linkedin-svgrepo-com.svg')} 
                 alt="LinkedIn Logo" 
                 className="h-8 w-8"
               />
@@ -732,7 +734,7 @@ export function Portfolio({ onViewProjects }) {
               className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black font-semibold px-8 py-4 text-lg"
               asChild
             >
-              <a href="./VE_Resume.pdf" download="Victor_Ekeke_Resume.pdf" aria-label="Download Victor Ekeke's resume (PDF)">
+              <a href={withBase('VE_Resume.pdf')} download="Victor_Ekeke_Resume.pdf" aria-label="Download Victor Ekeke's resume (PDF)">
                 <Download className="h-5 w-5 mr-2" />
                 Download CV
               </a>

@@ -6,27 +6,36 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { ImageWithLoading } from "@/components/ImageWithLoading"
 import { X, ArrowUpRight } from 'lucide-react'
 
+const withBase = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 const projects = {
+  startupListAfrica: {
+    title: 'StartupList Africa',
+    image: withBase('images/SLA Hero.jpg'),
+    tags: ['Front-end', 'Landing Page', 'UI/UX'],
+    desc: 'StartupList Africa is a data intelligence platform focused on connecting the African startup ecosystem to foster investment and growth.',
+    link: 'https://startuplist.africa/'
+  },
   pamperedByYuni: {
     title: 'Pampered by Yuni',
-    image: './images/Pampered by Yuni Hero.jpg',
+    image: withBase('images/Pampered by Yuni Hero.jpg'),
     tags: ['Front-end', 'Beauty Brand', 'Wellness'],
     desc: 'Pampered By Yuni is a self-care beauty brand focused on healing through intentional, personalized wellness.',
     link: 'https://pamperedbyyuni.com'
   },
-  vitech: {
-    title: 'ViTech Accessories',
-    image: './images/ViTech Landing Page.jpg',
-    tags: ['Front-end', 'E-commerce', 'Responsive'],
-    desc: 'A modern e-commerce landing page showcasing tech accessories. Features responsive design and interactive elements.',
-    link: 'https://victamu.github.io/ViTech/'
-  },
   calculator: {
     title: 'Simple & Scientific Calculator',
-    image: './images/Scientific Calculator.jpg',
+    image: withBase('images/Scientific Calculator.jpg'),
     tags: ['Front-end', 'Background Animation', 'JavaScript'],
     desc: 'A feature-rich calculator that handles both basic arithmetic and complex scientific calculations. Built with HTML, CSS, and JavaScript.',
     link: 'https://victamu.github.io/Calculator/index.html'
+  },
+  vitech: {
+    title: 'ViTech Accessories',
+    image: withBase('images/ViTech Landing Page.jpg'),
+    tags: ['Front-end', 'E-commerce', 'Responsive'],
+    desc: 'A modern e-commerce landing page showcasing tech accessories. Features responsive design and interactive elements.',
+    link: 'https://victamu.github.io/ViTech/'
   }
 }
 
@@ -95,6 +104,42 @@ export function Projects({ onBack }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
+            onClick={() => openProjectModal('startupListAfrica')}
+            role="button"
+            tabIndex={0}
+            aria-label="View StartupList Africa project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('startupListAfrica')
+              }
+            }}
+          >
+            <div className="aspect-[4/3] overflow-hidden">
+              <ImageWithLoading
+                src={projects.startupListAfrica.image}
+                alt={projects.startupListAfrica.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                containerClassName="w-full h-full"
+              />
+            </div>
+            <CardHeader className="pb-3">
+              <h3 className="text-xl font-bold text-white">
+                {projects.startupListAfrica.title}
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                {projects.startupListAfrica.desc}
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-orange-500 text-sm">↗</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card 
+            className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
             onClick={() => openProjectModal('pamperedByYuni')}
             role="button"
             tabIndex={0}
@@ -131,42 +176,6 @@ export function Projects({ onBack }) {
 
           <Card 
             className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
-            onClick={() => openProjectModal('vitech')}
-            role="button"
-            tabIndex={0}
-            aria-label="View ViTech Accessories project details"
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault()
-                openProjectModal('vitech')
-              }
-            }}
-          >
-            <div className="aspect-[4/3] overflow-hidden">
-              <ImageWithLoading
-                src={projects.vitech.image}
-                alt={projects.vitech.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                containerClassName="w-full h-full"
-              />
-            </div>
-            <CardHeader className="pb-3">
-              <h3 className="text-xl font-bold text-white">
-                {projects.vitech.title}
-              </h3>
-            </CardHeader>
-            <CardContent className="pt-0">
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                {projects.vitech.desc}
-              </p>
-              <div className="flex justify-between items-center">
-                <span className="text-orange-500 text-sm">↗</span>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card 
-            className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
             onClick={() => openProjectModal('calculator')}
             role="button"
             tabIndex={0}
@@ -194,6 +203,42 @@ export function Projects({ onBack }) {
             <CardContent className="pt-0">
               <p className="text-gray-400 mb-4 leading-relaxed">
                 {projects.calculator.desc}
+              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-orange-500 text-sm">↗</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card 
+            className="bg-[#232526] border-[#232526] hover:scale-105 hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden group shadow-lg min-h-[420px]"
+            onClick={() => openProjectModal('vitech')}
+            role="button"
+            tabIndex={0}
+            aria-label="View ViTech Accessories project details"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                openProjectModal('vitech')
+              }
+            }}
+          >
+            <div className="aspect-[4/3] overflow-hidden">
+              <ImageWithLoading
+                src={projects.vitech.image}
+                alt={projects.vitech.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                containerClassName="w-full h-full"
+              />
+            </div>
+            <CardHeader className="pb-3">
+              <h3 className="text-xl font-bold text-white">
+                {projects.vitech.title}
+              </h3>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                {projects.vitech.desc}
               </p>
               <div className="flex justify-between items-center">
                 <span className="text-orange-500 text-sm">↗</span>
