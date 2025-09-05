@@ -47,7 +47,6 @@ Skelly2_Port/
 │   │   ├── ViTech Landing Page.jpg
 │   │   ├── ViTech Shop Page.jpg
 │   │   └── VE_Resume.pdf
-│   └── test.html          # Test page
 ├── src/
 │   ├── components/         # React components
 │   │   ├── ui/            # shadcn/ui component library
