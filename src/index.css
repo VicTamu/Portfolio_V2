@@ -159,3 +159,89 @@
     @apply ring-2 ring-orange-500 ring-offset-2;
   }
 }
+
+@layer components {
+  /* Background blob animations */
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    25% {
+      transform: translateY(-20px) translateX(10px) scale(1.05);
+    }
+    50% {
+      transform: translateY(-10px) translateX(-15px) scale(0.95);
+    }
+    75% {
+      transform: translateY(-30px) translateX(5px) scale(1.02);
+    }
+  }
+
+  @keyframes float-medium {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    33% {
+      transform: translateY(-15px) translateX(-20px) scale(1.08);
+    }
+    66% {
+      transform: translateY(-25px) translateX(10px) scale(0.92);
+    }
+  }
+
+  @keyframes float-fast {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    50% {
+      transform: translateY(-18px) translateX(-8px) scale(1.03);
+    }
+  }
+
+  @keyframes float-extra-slow {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    30% {
+      transform: translateY(-25px) translateX(15px) scale(1.06);
+    }
+    60% {
+      transform: translateY(-12px) translateX(-20px) scale(0.94);
+    }
+    90% {
+      transform: translateY(-35px) translateX(8px) scale(1.04);
+    }
+  }
+
+  @keyframes float-gentle {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    40% {
+      transform: translateY(-22px) translateX(-12px) scale(1.07);
+    }
+    80% {
+      transform: translateY(-8px) translateX(18px) scale(0.93);
+    }
+  }
+
+  .blob-animation-1 {
+    animation: float-slow 20s ease-in-out infinite;
+  }
+
+  .blob-animation-2 {
+    animation: float-medium 25s ease-in-out infinite reverse;
+  }
+
+  .blob-animation-3 {
+    animation: float-fast 18s ease-in-out infinite;
+  }
+
+  .blob-animation-4 {
+    animation: float-extra-slow 22s ease-in-out infinite;
+  }
+
+  .blob-animation-5 {
+    animation: float-gentle 24s ease-in-out infinite reverse;
+  }
+}

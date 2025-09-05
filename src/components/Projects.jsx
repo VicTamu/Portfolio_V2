@@ -62,9 +62,11 @@ export function Projects({ onBack }) {
         Skip to main content
       </a>
       <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
-        <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-4 sm:right-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl blob-animation-1"></div>
+        <div className="absolute bottom-20 right-4 sm:right-10 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl blob-animation-2"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 h-48 sm:w-96 sm:h-96 bg-orange-500/10 rounded-full blur-2xl sm:blur-3xl blob-animation-3"></div>
+        <div className="absolute top-16 right-8 sm:right-16 w-40 h-40 sm:w-80 sm:h-80 bg-orange-500/8 rounded-full blur-2xl sm:blur-3xl blob-animation-4"></div>
+        <div className="absolute bottom-16 left-8 sm:left-16 w-36 h-36 sm:w-72 sm:h-72 bg-orange-500/12 rounded-full blur-2xl sm:blur-3xl blob-animation-5"></div>
       </div>
 
       <nav className="fixed top-0 left-0 w-full z-50 bg-[#181a1b]/90 backdrop-blur-md border-b border-[#232526]/50" role="navigation" aria-label="Projects navigation">
